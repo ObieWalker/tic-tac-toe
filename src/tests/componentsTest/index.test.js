@@ -44,14 +44,14 @@ describe('Layout Component', () => {
     wrapper.instance().checkForDraw();
     expect(wrapper.instance().resetGame).toBeDefined();
   });
-  // it('should have a method that handles reset game', () => {
-  //   let initialState = {
-  //     board: Array(9).fill(null),
-  //     turn: "X",
-  //     won: false
-  //   }
-  //   wrapper.instance().resetGame();
-  //   expect(wrapper.state()).toEqual(initialState);
+  it('should have a method that handles reset game', () => {
+    let initialState = {
+      board: Array(9).fill(null),
+      turn: "X",
+      won: false
+    }
+    wrapper.instance().resetGame();
+    expect(wrapper.state()).toEqual(initialState);
   // });
 //   it('should have a method that handles checkout modal visibility', () => {
 //     wrapper.instance().openCheckoutModal();
