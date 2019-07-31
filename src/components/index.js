@@ -15,6 +15,7 @@ let winCombination = [
 ]
 
 class Main extends Component {
+
   state = {
     board: Array(9).fill(null),
     turn: "X",
@@ -36,17 +37,27 @@ class Main extends Component {
     }
 
   }
+
+  resetGame = () => {
+    this.setState({
+      board: Array(9).fill(null),
+      turn: "X",
+      won: false
+    })
+  }
   
   checkForWinner = () => {
     winCombination.map(combo => {
       const [box1, box2, box3] = combo
       if (this.winCondition(box1, box2, box3)){
         const winningPlayer = this.state.turn === "X" ? "Player 2(O)" : "Player 1(X)"
-        swal({
-          text: `${winningPlayer} has won.`,
-        });
         this.setState({
           won: true
+        })
+        swal({
+          text: `${winningPlayer} has won.`,
+        }).then(() => {
+          this.resetGame()
         })
       }
     })
