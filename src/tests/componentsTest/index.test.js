@@ -1,7 +1,6 @@
 import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
-import renderer from "react-test-renderer";
 import Main from '../../components/index';
 
 
@@ -13,7 +12,7 @@ let wrapper;
 
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = shallow(<Main {...props} />);
+    mountedComponent = shallow(<Main />);
   }
   return mountedComponent;
 };
