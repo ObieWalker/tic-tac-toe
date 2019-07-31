@@ -38,7 +38,7 @@ describe('Layout Component', () => {
   });
   it('should have a method that handles undo last move', () => {
     wrapper.instance().undoLastMove();
-    expect(wrapper.state().playOrder).toEqual([]);
+    expect(wrapper.state().playOrder).toEqual([1]);
   });
   // it('should have a method that handles checking for a draw', () => {
   //   wrapper.instance().checkForDraw();
