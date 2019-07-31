@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import swal from 'sweetalert';
 import Box from './Box';
-import Board from './Board'
 
 let winCombination = [
   ["0", "1", "2"],
@@ -19,10 +18,12 @@ class Main extends Component {
   state = {
     board: Array(9).fill(null),
     turn: "X",
-    won: false
+    won: false,
+    playOrder: []
   }
 
   clickBox = (key) => {
+    this.setPlayOrder(key)
     const { board, won } = this.state
     if (!board[key] && !won){
       let updatedBoard = this.state.board
@@ -34,8 +35,40 @@ class Main extends Component {
       }, () => {
         this.checkForWinner()
       })
+      this.checkForDraw()
     }
+  }
 
+  setPlayOrder = (key) => {
+    this.setState(state => {
+      const playOrder = state.playOrder.concat(key);
+      return {
+        playOrder
+      };
+    })
+  }
+
+  undoLastMove = () => {
+    let lastMove = this.state.playOrder.length - 1
+    let updatedBoard = this.state.board
+    updatedBoard[this.state.playOrder[lastMove]] = null
+    this.setState(state => {
+      const playOrder = state.playOrder.filter((item, j) => lastMove !== j);
+      return {
+        playOrder,
+        turn: this.state.turn === "X" ? "O" : "X"
+      };
+    });
+  }
+
+  checkForDraw = () => {
+    if (!this.state.board.includes(null)){
+      swal({
+        text: 'The game is a draw.',
+      }).then(() => {
+        this.resetGame()
+      })
+    }
   }
 
   resetGame = () => {
@@ -72,20 +105,24 @@ class Main extends Component {
   }
 
   render() {
-    const boxes = 
-      this.state.board.map(
-        (box, i)=> 
-        <Box 
-          box={box}
-          key={i}
-          onClick={() => this.clickBox(i)}/>
-      )
+    const boxes = this.state.board.map(
+      (box, i)=> 
+      <Box
+        turn={this.state.turn}
+        box={box}
+        key={i}
+        onClick={() => this.clickBox(i)}
+      />
+    )
 
     return (
       <div className="container">
-        <h3> Tic Tac Toe</h3>
+        <div>
+          <h2 className="header-text"> Tic Tac Toe</h2>
+          <span><button className="undo-button" onClick={this.undoLastMove}>Undo</button></span>
+        </div>
         <div className="board"> 
-        {boxes}
+          {boxes}
         </div>
       </div>
     );
