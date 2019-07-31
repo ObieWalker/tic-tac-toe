@@ -32,27 +32,27 @@ describe('Layout Component', () => {
     expect(wrapper.state().board).toEqual(newArray);
     expect(wrapper.state().turn).toEqual("O");
   });
-  it('should have a method that handles setting play order', () => {
-    wrapper.instance().setPlayOrder(3);
-    expect(wrapper.state().playOrder).toEqual([1, 3]);
-  });
-  it('should have a method that handles undo last move', () => {
-    wrapper.instance().undoLastMove();
-    expect(wrapper.state().playOrder).toEqual([1]);
-  });
-  it('should have a method that handles checking for a draw', () => {
-    wrapper.instance().checkForDraw();
-    expect(wrapper.instance().resetGame).toBeDefined();
-  });
-  it('should have a method that handles reset game', () => {
-    let initialState = {
-      board: Array(9).fill(null),
-      turn: "X",
-      won: false
-    }
-    wrapper.instance().resetGame();
-    expect(wrapper.state()).toEqual(initialState);
-  });
+  // it('should have a method that handles setting play order', () => {
+  //   wrapper.instance().setPlayOrder(3);
+  //   expect(wrapper.state().playOrder).toEqual([1, 3]);
+  // });
+  // it('should have a method that handles undo last move', () => {
+  //   wrapper.instance().undoLastMove();
+  //   expect(wrapper.state().playOrder).toEqual([1]);
+  // });
+  // it('should have a method that handles checking for a draw', () => {
+  //   wrapper.instance().checkForDraw();
+  //   expect(wrapper.instance().resetGame).toBeDefined();
+  // });
+  // it('should have a method that handles reset game', () => {
+  //   let initialState = {
+  //     board: Array(9).fill(null),
+  //     turn: "X",
+  //     won: false
+  //   }
+  //   wrapper.instance().resetGame();
+  //   expect(wrapper.state()).toEqual(initialState);
+  // });
 //   it('should have a method that handles checkout modal visibility', () => {
 //     wrapper.instance().openCheckoutModal();
 //     expect(wrapper.state().checkoutVisible).toEqual(true);
