@@ -13,6 +13,13 @@ let winCombination = [
   ["2", "5", "8"]
 ]
 
+const initialState = {
+  board: Array(9).fill(null),
+  turn: "X",
+  won: false,
+  playOrder: []
+};
+
 class Main extends Component {
 
   state = {
@@ -72,12 +79,7 @@ class Main extends Component {
   }
 
   resetGame = () => {
-    this.setState({
-      board: Array(9).fill(null),
-      turn: "X",
-      won: false,
-      playOrder: []
-    })
+    this.setState(initialState)
   }
   
   checkForWinner = () => {

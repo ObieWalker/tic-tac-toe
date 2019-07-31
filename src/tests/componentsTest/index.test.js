@@ -48,11 +48,12 @@ describe('Layout Component', () => {
     let initialState = {
       board: Array(9).fill(null),
       turn: "X",
-      won: false
+      won: false,
+      playOrder: []
     }
     wrapper.instance().resetGame();
     expect(wrapper.state()).toEqual(initialState);
-  // });
+  });
 //   it('should have a method that handles checkout modal visibility', () => {
 //     wrapper.instance().openCheckoutModal();
 //     expect(wrapper.state().checkoutVisible).toEqual(true);
