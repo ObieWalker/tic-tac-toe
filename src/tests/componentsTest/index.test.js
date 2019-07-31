@@ -26,26 +26,33 @@ describe('Layout Component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-//   it('should have a method that handles toggle modal visibility', () => {
-//     wrapper.instance().toggleModalVisibility();
-//     expect(wrapper.state().productModalVisible).toEqual(true);
-//   });
-//   it('should have a method that handles toggle sign in modal visibility', () => {
-//     wrapper.instance().toggleSignInModalVisibility();
-//     expect(wrapper.state().signInModalVisible).toEqual(true);
-//   });
-//   it('should have a method that handles auth modal visibility', () => {
-//     wrapper.instance().openAuthModal();
-//     expect(wrapper.state().signInModalVisible).toEqual(true);
-//   });
-//   it('should have a method that handles cart visibility', () => {
-//     wrapper.instance().openCart();
-//     expect(wrapper.state().cartVisible).toEqual(true);
-//   });
-//   it('should have a method that handles close visibility', () => {
-//     wrapper.instance().onClose();
-//     expect(wrapper.state().cartVisible).toEqual(false);
-//   });
+  it('should have a method that handles clicking a box', () => {
+    wrapper.instance().clickBox(1);
+    let newArray = [null, "X",null,null,  null,null, null, null, null]
+    expect(wrapper.state().board).toEqual(newArray);
+    expect(wrapper.state().turn).toEqual("O");
+  });
+  it('should have a method that handles setting play order', () => {
+    wrapper.instance().setPlayOrder(3);
+    expect(wrapper.state().playOrder).toEqual([1, 3]);
+  });
+  it('should have a method that handles undo last move', () => {
+    wrapper.instance().undoLastMove();
+    expect(wrapper.state().playOrder).toEqual([1]);
+  });
+  it('should have a method that handles checking for a draw', () => {
+    wrapper.instance().checkForDraw();
+    expect(wrapper.instance().resetGame).toBeDefined();
+  });
+  it('should have a method that handles reset game', () => {
+    let initialState = {
+      board: Array(9).fill(null),
+      turn: "X",
+      won: false
+    }
+    wrapper.instance().resetGame();
+    expect(wrapper.state()).toEqual(initialState);
+  });
 //   it('should have a method that handles checkout modal visibility', () => {
 //     wrapper.instance().openCheckoutModal();
 //     expect(wrapper.state().checkoutVisible).toEqual(true);

@@ -75,7 +75,8 @@ class Main extends Component {
     this.setState({
       board: Array(9).fill(null),
       turn: "X",
-      won: false
+      won: false,
+      playOrder: []
     })
   }
   
