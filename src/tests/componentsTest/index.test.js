@@ -40,10 +40,10 @@ describe('Layout Component', () => {
     wrapper.instance().undoLastMove();
     expect(wrapper.state().playOrder).toEqual([1]);
   });
-  // it('should have a method that handles checking for a draw', () => {
-  //   wrapper.instance().checkForDraw();
-  //   expect(wrapper.instance().resetGame).toBeDefined();
-  // });
+  it('should have a method that handles checking for a draw', () => {
+    wrapper.instance().checkForDraw();
+    expect(wrapper.instance().resetGame).toBeDefined();
+  });
   // it('should have a method that handles reset game', () => {
   //   let initialState = {
   //     board: Array(9).fill(null),
