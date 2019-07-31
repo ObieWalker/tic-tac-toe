@@ -64,20 +64,7 @@ describe('Layout Component', () => {
     expect(wrapper.instance().resetGame).toBeDefined();
     expect(wrapper.state().won).toEqual(true);
   });
-//   it('should have a method that handles closes checkout modal', () => {
-//     wrapper.instance().handleVisibility();
-//     expect(wrapper.state().checkoutVisible).toEqual(false);
-//   });
-//   it('should have a method that sets product state', () => {
-//     wrapper.instance().setProductsState(1, null, null);
-//     expect(wrapper.state().department).toEqual(1);
-//   });
-//   it('should have a method that handles page change state', () => {
-//     wrapper.instance().changePage(1);
-//     expect(wrapper.state().page).toEqual(1);
-//   });
-//   it('should have a method that handles preset products', () => {
-//     wrapper.instance().resetProducts();
-//     expect(wrapper.state().page).toEqual(1);
-//   });
+  it('should have a method that checks win condition', () => {
+    expect(wrapper.instance().winCondition("0", "1", "2")).toEqual(true);
+  });
 });
