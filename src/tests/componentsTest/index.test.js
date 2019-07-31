@@ -54,10 +54,16 @@ describe('Layout Component', () => {
     wrapper.instance().resetGame();
     expect(wrapper.state()).toEqual(initialState);
   });
-//   it('should have a method that handles checkout modal visibility', () => {
-//     wrapper.instance().openCheckoutModal();
-//     expect(wrapper.state().checkoutVisible).toEqual(true);
-//   });
+  it('should have a method that handles check for winner', () => {
+
+    wrapper.instance().clickBox(0);
+    wrapper.instance().clickBox(3);
+    wrapper.instance().clickBox(1);
+    wrapper.instance().clickBox(4);
+    wrapper.instance().clickBox(2);
+    expect(wrapper.instance().resetGame).toBeDefined();
+    expect(wrapper.state().won).toEqual(true);
+  });
 //   it('should have a method that handles closes checkout modal', () => {
 //     wrapper.instance().handleVisibility();
 //     expect(wrapper.state().checkoutVisible).toEqual(false);
